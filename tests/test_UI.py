@@ -8,7 +8,7 @@ Guess=driver.find_element("xpath","//button[@type='submit']").click()
 time.sleep(5)
 
 # Create a Facade class
-class Facade:
+class test_UI:
     def __init__(self, driver):
         self.driver = driver
     
@@ -21,6 +21,6 @@ class Facade:
         time.sleep(5)
 
 # Create an instance of the Facade class
-facade = Facade(driver)
+facade = test_UI(driver)
 facade.home()
 facade.about()
