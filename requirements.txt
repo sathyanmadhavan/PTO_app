@@ -3,5 +3,5 @@ sklearn
 scikit-learn==0.23.2
 nltk==3.5
 selenium==4.7.2
-jsonpath==0.2
+jsonpath==0.82
 requests==2.28.2
