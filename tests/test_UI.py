@@ -1,7 +1,7 @@
 from selenium import webdriver
 import time
 driver=webdriver.Chrome()
-driver.get('http://127.0.0.1:6464/')
+driver.get('https://practice-testing-ai-ml.qxf2.com/')
 element = driver.find_element("xpath",'//a[@href="/is-pto"]').click()
 message=driver.find_element("xpath","//input[@type='text']").send_keys("I am sick today")
 Guess=driver.find_element("xpath","//button[@type='submit']").click()

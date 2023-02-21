@@ -1,6 +1,6 @@
 import requests
 
-BASIC_URL = "http://127.0.0.1:6464/"
+BASIC_URL = "https://practice-testing-ai-ml.qxf2.com/"
 
 class test_app():
     def test_get_status_code_equals_200():
