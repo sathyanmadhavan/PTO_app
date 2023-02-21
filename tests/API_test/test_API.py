@@ -33,6 +33,22 @@ def test_check_page_body():
         assert "body" in json_data
         assert json_data["body"] == "We would love to hear from you!"
 
+def test_check_page_date():
+    url = BASIC_URL
+    response = requests.get(url)
+    if response.status_code != 204 and response.headers["Content-Type"].startswith("application/json"):
+        json_data = response.json()
+        assert "date" in json_data
+        assert json_data["date"] == "2020-08-13"
+
+def test_check_page_tags():
+    url = BASIC_URL
+    response = requests.get(url)
+    if response.status_code != 204 and response.headers["Content-Type"].startswith("application/json"):
+        json_data = response.json()
+        assert "tags" in json_data
+        assert json_data["tags"] == ["testing", "ai", "ml"]
+
 
 
 test_get_status_code_equals_200()
