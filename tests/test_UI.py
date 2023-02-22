@@ -14,6 +14,7 @@ def test_about():
 def test_home():
     driver.find_element("xpath","//img[@alt='Practice testing AI/ML based applications']").click()
     time.sleep(3)
+    
 def test_is_pto():
     driver.find_element("xpath",'//a[@href="/is-pto"]').click()
     time.sleep(5)
