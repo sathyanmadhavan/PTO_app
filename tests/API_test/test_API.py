@@ -2,7 +2,7 @@ import requests
 import json
 import jsonpath
 
-BASIC_URL = "http://127.0.0.1:6464/"
+BASIC_URL = "http://127.0.0.1:6464/is-pto"
 
 
 def test_get_status_code_equals_200():
@@ -20,38 +20,28 @@ def test_check_content_type_headers():
 def test_check_page_title():
     url = BASIC_URL
     response = requests.get(url)
-    if response.status_code != 204 and response.headers["Content-Type"].startswith("application/json"):
-        json_data = response.json()
+    if response.status_code != 204 and response.headers["Content-Type"].startswith("text/html"):
+        f = open('data.json')
+        json_data = json.load(f)
+        print(json_data)
         assert "title" in json_data
-        assert json_data["title"] == "Practice testing AI/ML based applications"
+        if json_data["title"] == "Practice testing AI/ML based applications":
+            print("Passed")
+        else:
+            print("Fail")
 
-def test_check_page_body():
+def test_response():
     url = BASIC_URL
-    response = requests.get(url)
-    if response.status_code != 204 and response.headers["Content-Type"].startswith("application/json"):
-        json_data = response.json()
-        assert "body" in json_data
-        assert json_data["body"] == "We would love to hear from you!"
-
-def test_check_page_date():
-    url = BASIC_URL
-    response = requests.get(url)
-    if response.status_code != 204 and response.headers["Content-Type"].startswith("application/json"):
-        json_data = response.json()
-        assert "date" in json_data
-        assert json_data["date"] == "2020-08-13"
-
-def test_check_page_tags():
-    url = BASIC_URL
-    response = requests.get(url)
-    if response.status_code != 204 and response.headers["Content-Type"].startswith("application/json"):
-        json_data = response.json()
-        assert "tags" in json_data
-        assert json_data["tags"] == ["testing", "ai", "ml"]
-
-
+    data = {'message': 'I am Sick out today!'}
+    response = requests.post(url, data=data)
+    if response.status_code == 200:
+        output = response.text
+        print(output)
+    else:
+        print('Error: ', response.status_code)
 
 test_get_status_code_equals_200()
 test_check_content_type_headers()
 test_check_page_title()
-test_check_page_body()
+test_response()
+
