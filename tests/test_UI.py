@@ -1,7 +1,7 @@
 from selenium import webdriver
 import time
-driver=webdriver.Chrome()
-driver.get('http://127.0.0.1:6464/')
+driver=webdriver.Chrome(executable_path= "chromedriver.exe")
+driver.get('https://practice-testing-ai-ml.qxf2.com/is-pto')
 time.sleep(5)
 
 def __init__(self, driver):
