@@ -21,26 +21,26 @@ for option in options:
 
 driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 driver.get('https://practice-testing-ai-ml.qxf2.com/')
-
-def __init__(self, driver):
-    self.driver = driver
+class test_facade():
+    def __init__(self, driver):
+        self.driver = driver
     
-def test_home(self):
-    self.driver.find_element("xpath","//img[@alt='Practice testing AI/ML based applications']").click()
-    time.sleep(5)
+    def test_home(self):
+        self.driver.find_element("xpath","//img[@alt='Practice testing AI/ML based applications']").click()
+        time.sleep(5)
 
-def test_input(self):
-     self.driver.find_element("xpath",'//a[@href="/is-pto"]').click()
-     self.driver.find_element("xpath","//input[@type='text']").send_keys("I am sick today")
-     self.driver.find_element("xpath","//button[@type='submit']").click()
-     time.sleep(5)
+    def test_input(self):
+        self.driver.find_element("xpath",'//a[@href="/is-pto"]').click()
+        self.driver.find_element("xpath","//input[@type='text']").send_keys("I am sick today")
+        self.driver.find_element("xpath","//button[@type='submit']").click()
+        time.sleep(5)
     
-def test_about(self):
-    self.driver.find_element("xpath",'//a[@href="/about"]').click()
-    time.sleep(5)
+    def test_about(self):
+        self.driver.find_element("xpath",'//a[@href="/about"]').click()
+        time.sleep(5)
 
 # Create an instance of the Facade class
-facade = driver
-test_home()
-test_input()
-test_about()
+facade = test_facade(driver)
+facade.test_home()
+facade.test_input()
+facade.test_about()
