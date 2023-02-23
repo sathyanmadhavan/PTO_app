@@ -1,11 +1,9 @@
-from selenium import webdriver
+import time
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-import time
-
 chrome_service = Service(ChromeDriverManager().install())
-
 chrome_options = Options()
 options = [
     "--headless",
@@ -26,17 +24,14 @@ def __init__(self, driver):
 def test_home():
     driver.find_element("xpath","//img[@alt='Practice testing AI/ML based applications']").click()
     time.sleep(5)
-
 def test_input():
     driver.find_element("xpath",'//a[@href="/is-pto"]').click()
     driver.find_element("xpath","//input[@type='text']").send_keys("I am sick today")
     driver.find_element("xpath","//button[@type='submit']").click()
     time.sleep(5)
-    
 def test_about():
     driver.find_element("xpath",'//a[@href="/about"]').click()
     time.sleep(5)
-
 # Create an instance of the Facade class
 facade = driver
 test_home()
