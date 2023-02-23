@@ -1,6 +1,6 @@
 from selenium import webdriver
 import time 
-driver_path = "tests/driver"
+driver_path = "tests\driver\chromedrive.exe"
 driver = webdriver.Chrome(driver_path) 
 driver.get('https://practice-testing-ai-ml.qxf2.com/')
 time.sleep(5)
