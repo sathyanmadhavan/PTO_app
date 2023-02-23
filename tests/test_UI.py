@@ -1,6 +1,6 @@
 from selenium import webdriver
 import time
-driver=webdriver.Chrome(executable_path='tests/chromedriver.exe')
+driver=webdriver.Chrome()
 driver.get('https://practice-testing-ai-ml.qxf2.com/')
 element = driver.find_element("xpath",'//a[@href="/is-pto"]').click()
 message=driver.find_element("xpath","//input[@type='text']").send_keys("I am sick today")
