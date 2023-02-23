@@ -16,6 +16,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    services:
+      hub:
+        image: selenium/hub:latest
+      chrome:
+        image: selenium/node-chrome:latest
+        env:
+          HUB_HOST: hub
+          HUB_PORT: 4444
 
     steps:
     - uses: actions/checkout@v3
