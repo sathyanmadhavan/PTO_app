@@ -1,10 +1,7 @@
 import requests
 import json
 import jsonpath
-
 BASIC_URL = "https://practice-testing-ai-ml.qxf2.com/is-pto"
-
-
 def test_get_status_code_equals_200():
     url = BASIC_URL
     response = requests.get(url)
