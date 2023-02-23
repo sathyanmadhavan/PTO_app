@@ -1,7 +1,8 @@
 from selenium import webdriver
-import time
-driver=webdriver.Chrome(executable_path= "chromedriver.exe")
-driver.get('https://practice-testing-ai-ml.qxf2.com/is-pto')
+import time 
+driver_path = "tests/driver"
+driver = webdriver.Chrome(driver_path) 
+driver.get('https://practice-testing-ai-ml.qxf2.com/')
 time.sleep(5)
 
 def __init__(self, driver):
