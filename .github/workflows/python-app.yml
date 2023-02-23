@@ -16,6 +16,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    services:
+      hub:
+        image: selenium/hub:latest
+      chrome:
+        image: selenium/node-chrome:latest
+        env:
+          HUB_HOST: hub
+          HUB_PORT: 4444
 
     steps:
     - uses: actions/checkout@v3
@@ -28,13 +36,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Install Chrome
+    - name: Prepare Selenium
+      uses: nanasess/setup-chromedriver@master
+    - name: Start XVFB
       run: |
-        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
-        sudo apt-get update
-        sudo apt-get install google-chrome-stable
-
+       sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional, disables headless mode
+    
+      
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
