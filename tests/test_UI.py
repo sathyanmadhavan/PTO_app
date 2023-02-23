@@ -1,6 +1,25 @@
 from selenium import webdriver
-import time
-driver=webdriver.Chrome()
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.utils import ChromeType
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+
+chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+
+chrome_options = Options()
+options = [
+    "--headless",
+    "--disable-gpu",
+    "--window-size=1920,1200",
+    "--ignore-certificate-errors",
+    "--disable-extensions",
+    "--no-sandbox",
+    "--disable-dev-shm-usage"
+]
+for option in options:
+    chrome_options.add_argument(option)
+
+driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 driver.get('https://practice-testing-ai-ml.qxf2.com/')
 element = driver.find_element("xpath",'//a[@href="/is-pto"]').click()
 message=driver.find_element("xpath","//input[@type='text']").send_keys("I am sick today")
