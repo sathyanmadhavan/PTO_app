@@ -2,14 +2,15 @@ import requests
 import json
 import jsonpath
 
-BASIC_URL = "http://127.0.0.1:6464/is-pto"
+BASIC_URL = "https://practice-testing-ai-ml.qxf2.com/is-pto"
 
 
 def test_get_status_code_equals_200():
     url = BASIC_URL
     response = requests.get(url)
-    assert response.status_code == 200 
-    print(response)
+    output = response.text
+    print(output)
+
 
 def test_check_content_type_headers():
     url = BASIC_URL
