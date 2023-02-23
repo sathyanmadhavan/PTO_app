@@ -6,3 +6,4 @@ selenium==4.7.2
 jsonpath==0.82
 requests==2.28.2
 webdriver_manager
+webdriver_manager.utils
